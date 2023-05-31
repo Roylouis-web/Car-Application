@@ -1,0 +1,349 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  
+}
+
+.main-header {
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+.home-link {
+    margin-right: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-navbar {
+    display: flex;
+    gap: 9px;
+    margin-right: 50px;
+}
+
+.main-navbar a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #161616;
+}
+
+.footer {
+    background: black;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.home-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-image: url('../../public/images/extras/mountain.jpg');
+    background-size: cover;
+    color: white;
+}
+
+.home-button {
+    padding: 10px;
+    color: white;
+    background-color: orange;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+.about-image > img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.about-image {
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.about-content {
+    padding: 20px;
+}
+
+.about-aside {
+    background-color: bisque;
+    padding: 20px;
+    margin-bottom: 100px;
+    border-radius: 5px;
+}
+
+.about-aside-button {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+}
+
+.car-details-link {
+   text-decoration: none;
+   color: black;
+   margin-bottom: 50px;
+}
+
+.car-photo {
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.car-photo-container {
+    display: grid;
+    grid-template: auto / 240px 240px 240px;
+    margin-bottom: 100px;
+    margin-left: 20px;
+}
+
+.car-type {
+    color: white;
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.car-h1 {
+    margin-left: 30px;
+}
+
+.car-details {
+    display: flex;
+    padding: 10px;
+    width: 190px;
+    justify-content: space-between;
+}
+
+.car-container {
+   padding: 10px;
+}
+
+.car-detail-photo {
+    width: 700px;
+    border-radius: 10px;
+}
+
+.car-detail-details {
+    margin-left: 5px;
+}
+
+.car-detail-type {
+    width: 10%;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.car-detail-container {
+    margin-bottom: 20px;
+    padding-bottom: 100px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+.car-detail-button {
+    border: none;
+    background-color: orange;
+    width: 50%;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.car-description {
+    max-width: 700px;
+}
+
+.host-navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+.host-navbar {
+    margin-top: 20px;
+    display: flex;
+    gap: 40px;
+    margin-left: 20px;
+}
+
+.host-navbar a:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+.host-car-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.host-car-container img:hover {
+    box-shadow: 1px 1px 5px;
+}
+
+.host-car-container {
+    background: whitesmoke;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+.host-car-h1 {
+    margin-left: 20px;
+}
+
+.host-car-photo-container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.host-car-details-container {
+    margin-top: 30px;
+    background: ghostwhite;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 100px;
+}
+
+.top {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.host-car-photo-container {
+    display: flex;
+    gap: 20px;
+}
+
+.host-cars-navbar {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px
+}
+
+.host-cars-navbar a:hover, .host-cars-navbar a:active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+.host-car-main-container {
+    margin-bottom: 150px;
+}
+
+.classic {
+    background-color: orange;
+    color: white;
+}
+
+.luxury {
+    background-color: black;
+    color: white;
+}
+
+.rugged {
+    background-color: blueviolet;
+    color: white;
+}
+
+.car-type-navbar {
+    margin-left: 25px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rugged-link, .luxury-link, .classic-link {
+    padding: 7px;
+    background: goldenrod;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+    border: none;
+    color: white;
+}
+
+.rugged-link:hover {
+    background-color: blueviolet;
+}
+
+.luxury-link:hover {
+    background-color: black;
+}
+
+.classic-link:hover {
+    background-color: orange;
+}
+
+.rugged-background {
+    background-color: blueviolet;
+}
+
+.classic-background {
+    background-color: orange;
+}
+
+.luxury-background {
+    background-color: black;
+}
+
+.clear-filter {
+    border-radius: 5px;
+    border: none;
+    padding: 7px;
+    width: 100px;
+}
+
+.car-photo:hover {
+    box-shadow: 1px 1px 5px;
+}
+
+.error .return-btn {
+  color: white;
+  background-color: black;
+  padding: 10px;
+  border-radius: 5px;
+  width: 420px;
+  text-align: center;
+}
+
+.error a {
+    color: white
+}
