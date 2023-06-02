@@ -1,28 +1,18 @@
-import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLoaderData, useSearchParams } from "react-router-dom";
+import getCars from "../../api/getCars";
+
+function loader() {
+  return getCars();
+}
 
 export default function Cars() {
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
-  const [cars, setCars] = useState([]);
-  useEffect(() => {
-    const getCars = async () => {
-        try {
-            const res = await fetch('/api/cars');
-            const data = await res.json();
-            const filteredCars = typeFilter ? data.cars.filter(car => car.type === typeFilter)
-            : data.cars;
-            setCars(filteredCars);
-        } catch(err) {
-            throw new Error('Something went wrong');
-        }
-    }
-    getCars();
-  }, [typeFilter]);
+  const cars = useLoaderData();
 
   localStorage.setItem("cars", JSON.stringify(cars));
-
-  const carComponents = cars.map(car => {
+  const filteredCars = typeFilter ? cars.filter(car => car.type === typeFilter) : cars;
+  const carComponents = filteredCars.map(car => {
     return (
         <Link key={car.id} to={car.id} state={{ search: searchParams.toString() }} className="car-details-button">
             <img src={ car.imageUrl } alt='car avatar' className="car-photo"/>
@@ -55,9 +45,8 @@ export default function Cars() {
       return prev;
     });
   };
- 
+
   return (
-    cars.length > 0 ? (
         <div className="car-container">
             <h1 className="car-h1">Explore our car options</h1>
             <nav className="car-type-navbar">
@@ -70,6 +59,7 @@ export default function Cars() {
             { carComponents }
             </div>
        </div>
-    ) : <p>Loading...</p>
   );
 };
+
+export { loader };

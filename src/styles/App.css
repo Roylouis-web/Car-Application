@@ -14,7 +14,7 @@ html, body {
     top: 0;
 }
 
-.home-link {
+.main-header .home-link {
     margin-right: auto;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: none;
@@ -27,8 +27,14 @@ a {
 
 .main-navbar {
     display: flex;
-    gap: 9px;
-    margin-right: 50px;
+    align-items: center;
+    gap: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-navbar {
+        gap: 15px;
+    }
 }
 
 .main-navbar a:hover {
@@ -121,10 +127,39 @@ a {
 
 .car-photo-container {
     display: grid;
-    grid-template: auto / 240px 240px 240px;
+    grid-template: auto / 240px 240px 240px 240px 240px 240px;
     margin-bottom: 100px;
     margin-left: 20px;
 }
+
+@media only screen and (max-width: 1300px) {
+    .car-photo-container {
+        grid-template: auto / 240px 240px 240px 240px 240px;
+    }
+
+    .main-header {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 1000px) {
+    .car-photo-container {
+        grid-template: auto / 240px 240px 240px;
+    }
+
+    .main-header {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .car-photo-container {
+        grid-template: auto / 240px;
+    }
+}
+
 
 .car-type {
     color: white;
@@ -166,6 +201,14 @@ a {
     margin-top: 10px;
     border-radius: 5px;
     text-align: center;
+}
+
+.host-car-detail-type  {
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 30%;
 }
 
 .car-detail-container {
@@ -346,4 +389,48 @@ a {
 
 .error a {
     color: white
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container > input {
+    width: 320px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid lightblue;
+    outline-color: lightblue;
+    background-color: rgba(173, 216, 230, 0.194);
+}
+
+.login-container > button {
+    width: 320px;
+    padding: 10px;
+    color: white;
+    background-color: orange;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+}
+
+.avatar {
+    text-align: center;
+    margin-right: 20px;
+}
+.avatar > p {
+    font-size: 25px;
+    border: 1px solid lightblue;
+    border-radius: 100px;
+    background-color: papayawhip;
+}
+
+.avatar-link:hover {
+    text-decoration: none;
+}
+
+.main-header .main-navbar .avatar-link {
+    margin-left: 30px;
+    text-decoration: none;
 }

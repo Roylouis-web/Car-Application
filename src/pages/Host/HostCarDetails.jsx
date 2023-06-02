@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import getHostCars from "../../api/getHostCars";
+import { requireAuth } from "../../utils";
+
+export async function loader({ params }) {
+  await requireAuth();
+  return getHostCars(params.id);
+};
 
 export default function HostCarsDetails() {
-    const id = useParams();
-    const [car, setCar] = useState(null);
-    useEffect(() => {
-      const getCar = async () => {
-         try {
-            const res = await fetch('/api/host/cars/1');
-            const data = await res.json();
-            setCar(data.cars[0]);
-         } catch(err) {
-           if (err) {
-            throw new Error("Something went wrong...");
-           }
-         }
-      };
-      getCar();
-    }, [id]);
-
+    const car = useLoaderData();
+    console.log(car);
     const styles = {
       fontWeight: "bold",
       textDecoration: "underline",
@@ -28,22 +19,27 @@ export default function HostCarsDetails() {
     };
     
     return (
-      car ? (
         <div className="top">
             ← <NavLink to=".." relative="path" className="back-link">Back to all cars</NavLink>
             <div className="host-car-details-container">
             <div className="host-car-photo-container">
-              <img src={ car.imageUrl } alt="car avatar" />
+              <img src={ car[0].imageUrl } alt="car avatar" />
               <div className="host-car-detail-container">
-                <div 
+                <div
+                className="host-car-detail-type"
+                style={{
+                  background: car[0].type === 'classic' ?
+                  'orange': car[0].type === 'luxury' ?
+                  'black': 'indigo'
+              }} 
                 >
-                  { car.type }
+                  { car[0].type }
                 </div>
                 <h1 className="host-car-name">
-                  { car.name }
+                  { car[0].name }
                 </h1>
                 <p className="host-car-price">
-                  <strong>${ car.price }</strong>/day
+                  <strong>${ car[0].price }</strong>/day
                 </p>
                 </div>
               </div>
@@ -74,6 +70,5 @@ export default function HostCarsDetails() {
               <Outlet context={car}/>
             </div>
           </div>
-      ) : <p>Loading...</p>
     );
   };

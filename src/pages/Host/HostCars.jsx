@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import getHostCars from "../../api/getHostCars";
+import { requireAuth } from "../../utils";
+
+export async function loader() {
+  await requireAuth();
+  return getHostCars();
+}
 
 export default function HostCars() {
-  const [cars, setCars] = useState([]);
-  useEffect(() => {
-    const getCars = async () => {
-        try {
-            const data = JSON.parse(localStorage.getItem("cars"));
-            setCars(data);
-        } catch(err) {
-            throw new Error('Something went wrong');
-        }
-    }
-    getCars();
-  }, []);
-
+  const cars = useLoaderData();
   const carComponents = cars.map(car => {
     return (
       <Link key={car.id} to={ `${car.id}`}>

@@ -26,6 +26,14 @@ export default function Header() {
                 className={({isActive}) => isActive ? "active": ""}
             >Cars
           </NavLink>
+          <NavLink 
+              to="#" 
+              className="avatar-link"
+            >
+              <div className="avatar">
+                <p>👨‍💼</p>
+              </div>
+          </NavLink>
         </nav>
     </header>
   );

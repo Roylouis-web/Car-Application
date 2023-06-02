@@ -1,27 +1,16 @@
-import { useState, useEffect } from "react";
-import { useParams, NavLink, useLocation } from "react-router-dom";
+import { useParams, NavLink, useLocation, useLoaderData } from "react-router-dom";
+import getCars from "../../api/getCars";
+
+export function loader({ params }) {
+    return getCars(params.id);
+}
 
 export default function CarDetails() {
-    const [car, setCar] = useState(null);
+    const car = useLoaderData();
     const location = useLocation();
     const back = location.state.search;
     const type = back.split("=")[1];
-    const { id } = useParams();
-    useEffect(() => {
-        const getCars = async () => {
-            try {
-                const res = await fetch(`/api/cars/${id}`);
-                const data = await res.json();
-                setCar(data.cars);
-            } catch(err) {
-                throw new Error('Something went wrong');
-            }
-        }
-        getCars();
-      }, [id]);
-
       return (
-        car ? (
             <div className="car-detail-container">
                 <div style={{ marginBottom: 10}}>← <NavLink to={back ? `..?${back}` : '..'} relative="path">{back ? `Back to all ${type} cars` : 'Back to all cars'}</NavLink></div>
                 <img src={ car.imageUrl } alt='car avatar' className="car-detail-photo"/>
@@ -46,6 +35,5 @@ export default function CarDetails() {
                     Rent this car
                 </button>
             </div>
-      ) : <p>Loading...</p>
-      )
+      );
 };
